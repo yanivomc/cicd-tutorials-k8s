@@ -60,6 +60,7 @@ spec:
 ~~~
 
 
-#Let's start Pipelines!
-Follow [this](https://www.google.com) link for Teckton Tutorials
+# Let's start Pipelines!
+
+Follow [this](https://github.com/yanivomc/cicd-tutorials-k8s/tree/master/Teckton) link for Teckton Tutorials
 

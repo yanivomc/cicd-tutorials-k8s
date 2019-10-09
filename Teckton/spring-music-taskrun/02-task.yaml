@@ -58,5 +58,3 @@ spec:
   volumes: # Using Volumes for sharing files across steps
     - name: shared-workdir
       emptyDir: {}
-
-        

@@ -1,0 +1,32 @@
+# PipelinesResources in a pipeline are the set of objects that are going to be used as inputs to a Task and can be output by a Task.
+
+# A Task can have multiple inputs and outputs.
+
+# For example:
+
+# A Task's input could be a GitHub source which contains your application code.
+# A Task's output can be your application container image which can be then deployed in a cluster.
+# A Task's output can be a jar file to be uploaded to a storage bucket.
+#  read more: https://github.com/tektoncd/pipeline/blob/master/docs/resources.md
+
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-repo
+spec:
+  type: git
+  params:
+    - name: revision
+      value: master
+    - name: url
+      value: https://gitlab.com/nmeisenzahl/tekton-demo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: image-registry
+spec:
+  type: image
+  params:
+    - name: url
+      value: registry.gitlab.com/nmeisenzahl/tekton-demo/demo:latest

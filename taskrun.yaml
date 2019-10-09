@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: demo-pipeline
+spec:
+  resources:
+    - name: git-repo
+      type: git
+    - name: image-registry
+      type: image
+  tasks:
+    - name: build-docker-image
+      taskRef:
+        name: build-docker-image
+      params:
+        - name: pathToDockerFile
+          value: /workspace/git-repo/Dockerfile
+        - name: pathToContext
+          value: /workspace/git-repo
+      resources:
+        inputs:
+          - name: git-repo
+            resource: git-repo
+        outputs:
+          - name: image-registry
+            resource: image-registry
